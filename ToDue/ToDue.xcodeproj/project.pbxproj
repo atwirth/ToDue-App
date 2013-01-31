@@ -19,6 +19,9 @@
 		C825B63716BADC49004B5B43 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C825B63516BADC49004B5B43 /* MainStoryboard.storyboard */; };
 		C825B63A16BADC49004B5B43 /* ToDueMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C825B63916BADC49004B5B43 /* ToDueMasterViewController.m */; };
 		C825B63D16BADC4A004B5B43 /* ToDueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C825B63C16BADC4A004B5B43 /* ToDueDetailViewController.m */; };
+		C825B64816BAE63E004B5B43 /* ToDueDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C825B64716BAE63E004B5B43 /* ToDueDataController.m */; };
+		C825B64B16BAE747004B5B43 /* Tasks.m in Sources */ = {isa = PBXBuildFile; fileRef = C825B64A16BAE747004B5B43 /* Tasks.m */; };
+		C825B64E16BAEBB1004B5B43 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C825B64D16BAEBB1004B5B43 /* AddTaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,12 @@
 		C825B63916BADC49004B5B43 /* ToDueMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDueMasterViewController.m; sourceTree = "<group>"; };
 		C825B63B16BADC4A004B5B43 /* ToDueDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDueDetailViewController.h; sourceTree = "<group>"; };
 		C825B63C16BADC4A004B5B43 /* ToDueDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDueDetailViewController.m; sourceTree = "<group>"; };
+		C825B64616BAE63E004B5B43 /* ToDueDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDueDataController.h; sourceTree = "<group>"; };
+		C825B64716BAE63E004B5B43 /* ToDueDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDueDataController.m; sourceTree = "<group>"; };
+		C825B64916BAE747004B5B43 /* Tasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tasks.h; sourceTree = "<group>"; };
+		C825B64A16BAE747004B5B43 /* Tasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tasks.m; sourceTree = "<group>"; };
+		C825B64C16BAEBB1004B5B43 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
+		C825B64D16BAEBB1004B5B43 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +98,14 @@
 				C825B62C16BADC49004B5B43 /* ToDueAppDelegate.h */,
 				C825B62D16BADC49004B5B43 /* ToDueAppDelegate.m */,
 				C825B63516BADC49004B5B43 /* MainStoryboard.storyboard */,
+				C825B64C16BAEBB1004B5B43 /* AddTaskViewController.h */,
+				C825B64D16BAEBB1004B5B43 /* AddTaskViewController.m */,
 				C825B63816BADC49004B5B43 /* ToDueMasterViewController.h */,
 				C825B63916BADC49004B5B43 /* ToDueMasterViewController.m */,
+				C825B64916BAE747004B5B43 /* Tasks.h */,
+				C825B64A16BAE747004B5B43 /* Tasks.m */,
+				C825B64616BAE63E004B5B43 /* ToDueDataController.h */,
+				C825B64716BAE63E004B5B43 /* ToDueDataController.m */,
 				C825B63B16BADC4A004B5B43 /* ToDueDetailViewController.h */,
 				C825B63C16BADC4A004B5B43 /* ToDueDetailViewController.m */,
 				C825B62416BADC49004B5B43 /* Supporting Files */,
@@ -183,6 +198,9 @@
 				C825B62E16BADC49004B5B43 /* ToDueAppDelegate.m in Sources */,
 				C825B63A16BADC49004B5B43 /* ToDueMasterViewController.m in Sources */,
 				C825B63D16BADC4A004B5B43 /* ToDueDetailViewController.m in Sources */,
+				C825B64816BAE63E004B5B43 /* ToDueDataController.m in Sources */,
+				C825B64B16BAE747004B5B43 /* Tasks.m in Sources */,
+				C825B64E16BAEBB1004B5B43 /* AddTaskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

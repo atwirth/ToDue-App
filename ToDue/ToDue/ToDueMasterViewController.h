@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ToDueDataController;
+
 @interface ToDueMasterViewController : UITableViewController
+
+@property (strong, nonatomic) ToDueDataController *dataController;
 
 @end
