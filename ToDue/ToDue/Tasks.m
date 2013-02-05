@@ -10,4 +10,14 @@
 
 @implementation Tasks
 
+-(id)initWithName:(NSString *)taskName
+{
+    self = [super init];
+    if (self) {
+        _taskName = taskName;
+        return self;
+    }
+    return nil;
+}
+
 @end

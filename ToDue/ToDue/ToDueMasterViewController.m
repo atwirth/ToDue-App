@@ -10,6 +10,7 @@
 #import "ToDueDataController.h"
 #import "Tasks.h"
 #import "ToDueDetailViewController.h"
+#import "AddTaskViewController.h"
 
 @interface ToDueMasterViewController () {
     
@@ -111,6 +112,28 @@
        // NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         //NSDate *object = _objects[indexPath.row];
         //[[segue destinationViewController] setDetailItem:object];
+    }
+}
+
+-(IBAction)done:(UIStoryboardSegue *)segue
+{
+    if([[segue identifier] isEqualToString:@"ReturnInput"]) {
+        
+        AddTaskViewController *addController = [segue sourceViewController];
+        if (addController.taskName) {
+            [self.dataController addTask:addController.taskName];
+            [[self tableView] reloadData];
+        }
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+    
+}
+
+-(IBAction)cancel:(UIStoryboardSegue *)segue
+{
+    if([[segue identifier] isEqualToString:@"CancelInput"]) {
+        
+        [self dismissViewControllerAnimated:YES  completion:NULL];
     }
 }
 

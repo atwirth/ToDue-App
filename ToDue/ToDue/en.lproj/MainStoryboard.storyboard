@@ -24,7 +24,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="" title="Master" id="12" customClass="ToDueMasterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -56,7 +56,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Task List" id="36">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="u90-fY-kqc"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NVb-tc-Dls"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NVb-tc-Dls">
+                            <connections>
+                                <segue destination="qQH-gw-8Vt" kind="modal" id="Ni7-lU-1qv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
@@ -68,7 +72,7 @@
             <objects>
                 <tableViewController id="wIl-GM-P8D" customClass="AddTaskViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fXa-2L-sJt" customClass="AddTask">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -85,25 +89,28 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" type="user" id="7Vl-lQ-QmG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7iQ-Xh-2SR">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="122" type="user" id="QIW-ba-AY8"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" type="user" id="uyg-oe-zI3"/>
+                                                        <constraint firstAttribute="width" constant="122" type="user" id="vkZ-pD-OKW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="wIl-GM-P8D" id="Gil-k5-fVB"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="7iQ-Xh-2SR" firstAttribute="leading" secondItem="ANy-iq-hVH" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="1uG-JN-qGc"/>
                                             <constraint firstItem="ANy-iq-hVH" firstAttribute="top" secondItem="cO1-6l-JXc" secondAttribute="top" constant="11" id="IDv-jb-Nmi"/>
                                             <constraint firstItem="ANy-iq-hVH" firstAttribute="leading" secondItem="cO1-6l-JXc" secondAttribute="leading" constant="20" type="user" id="JNY-qe-cd2"/>
-                                            <constraint firstItem="7iQ-Xh-2SR" firstAttribute="leading" secondItem="ANy-iq-hVH" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="T8h-zJ-FCj"/>
                                             <constraint firstItem="7iQ-Xh-2SR" firstAttribute="centerY" secondItem="cO1-6l-JXc" secondAttribute="centerY" type="default" id="VhN-Ax-sKC"/>
                                         </constraints>
                                     </tableViewCell>
@@ -116,11 +123,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NMj-gn-l2w">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6dL-kv-dJ0"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="V0A-wE-JNh"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6dL-kv-dJ0">
+                            <connections>
+                                <segue destination="bQE-Gm-LYU" kind="unwind" identifier="CancelInput" unwindAction="cancel:" id="VwB-gx-PTC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="V0A-wE-JNh">
+                            <connections>
+                                <segue destination="bQE-Gm-LYU" kind="unwind" identifier="ReturnInput" unwindAction="done:" id="EAw-c3-ZOc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="taskNameInput" destination="7iQ-Xh-2SR" id="DH2-XT-8KQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iri-hS-yLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bQE-Gm-LYU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1368" y="75"/>
         </scene>
@@ -140,23 +159,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3AV-IP-kfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="870" y="75"/>
+            <point key="canvasLocation" x="898" y="75"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddTaskViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTaskViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ToDueMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDueMasterViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

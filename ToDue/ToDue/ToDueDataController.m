@@ -42,6 +42,10 @@
     return [self.masterTaskList count];
 }
 
+- (Tasks *)objectInListAtIndex:(NSUInteger)theIndex{
+    return [self.masterTaskList objectAtIndex:theIndex];
+}
+
 - (void)addTask:(Tasks *)newTask{
     [self.masterTaskList addObject:newTask];
 }
