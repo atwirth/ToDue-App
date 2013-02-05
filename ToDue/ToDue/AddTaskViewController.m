@@ -14,7 +14,7 @@
 @end
 
 @implementation AddTaskViewController
-
+/*
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -23,7 +23,7 @@
     }
     return self;
 }
-
+*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,9 +52,9 @@
     
     if([[segue identifier] isEqualToString:@"ReturnInput"]) {
         if([self.taskNameInput.text length]) {
-            Tasks *taskName;
-            taskName = [[Tasks alloc] initWithName:self.taskNameInput.text];
-            self.taskName = taskName;
+            Tasks *tasking;
+            tasking = [[Tasks alloc] initWithName:self.taskNameInput.text];
+            self.tasking = tasking;
         }
     }
 }

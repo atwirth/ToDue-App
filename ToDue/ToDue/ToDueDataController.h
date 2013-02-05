@@ -17,7 +17,7 @@
 
 - (NSUInteger)countOfList;
 - (Tasks *)objectInListAtIndex:(NSUInteger)theIndex;
-- (void)addTask:(Tasks *)newTask;
+- (void)addTaskWithTask:(Tasks *)newTask;
 
 
 

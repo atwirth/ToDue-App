@@ -13,6 +13,7 @@
 @interface AddTaskViewController : UITableViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *taskNameInput;
 
-@property (strong, nonatomic) Tasks *taskName;
+
+@property (strong, nonatomic) Tasks *tasking;
 
 @end

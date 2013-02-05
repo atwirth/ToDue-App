@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskLabel" textLabel="phq-AM-6qj" style="IBUITableViewCellStyleDefault" id="lJ0-d7-vTF">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" textLabel="phq-AM-6qj" style="IBUITableViewCellStyleDefault" id="lJ0-d7-vTF">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -55,7 +55,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Task List" id="36">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="u90-fY-kqc"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="5Xf-ND-nGX"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NVb-tc-Dls">
                             <connections>
                                 <segue destination="qQH-gw-8Vt" kind="modal" id="Ni7-lU-1qv"/>
@@ -78,40 +78,40 @@
                         <sections>
                             <tableViewSection id="Fz9-RG-eb0">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cO1-6l-JXc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskNameInput" id="cO1-6l-JXc">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" text="Task Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANy-iq-hVH">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" text="Task Name: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzM-x7-dxU">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="94" type="user" id="7Vl-lQ-QmG"/>
+                                                        <constraint firstAttribute="width" constant="98" id="goq-EW-70u"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7iQ-Xh-2SR">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="999" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-Af-dsN">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" type="user" id="uyg-oe-zI3"/>
-                                                        <constraint firstAttribute="width" constant="122" type="user" id="vkZ-pD-OKW"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" type="user" id="lTA-eM-ioi"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="wIl-GM-P8D" id="Gil-k5-fVB"/>
+                                                        <outlet property="delegate" destination="wIl-GM-P8D" id="gu9-gs-uxX"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="7iQ-Xh-2SR" firstAttribute="leading" secondItem="ANy-iq-hVH" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="1uG-JN-qGc"/>
-                                            <constraint firstItem="ANy-iq-hVH" firstAttribute="top" secondItem="cO1-6l-JXc" secondAttribute="top" constant="11" id="IDv-jb-Nmi"/>
-                                            <constraint firstItem="ANy-iq-hVH" firstAttribute="leading" secondItem="cO1-6l-JXc" secondAttribute="leading" constant="20" type="user" id="JNY-qe-cd2"/>
-                                            <constraint firstItem="7iQ-Xh-2SR" firstAttribute="centerY" secondItem="cO1-6l-JXc" secondAttribute="centerY" type="default" id="VhN-Ax-sKC"/>
+                                            <constraint firstItem="lzM-x7-dxU" firstAttribute="top" secondItem="cO1-6l-JXc" secondAttribute="top" constant="11" id="0bL-WW-6hE"/>
+                                            <constraint firstItem="F1X-Af-dsN" firstAttribute="centerY" secondItem="cO1-6l-JXc" secondAttribute="centerY" type="default" id="D1f-En-MIF"/>
+                                            <constraint firstItem="lzM-x7-dxU" firstAttribute="leading" secondItem="cO1-6l-JXc" secondAttribute="leading" constant="20" type="user" id="NP9-Mn-MJg"/>
+                                            <constraint firstItem="F1X-Af-dsN" firstAttribute="leading" secondItem="lzM-x7-dxU" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="Pmb-4Z-aS7"/>
+                                            <constraint firstAttribute="trailing" secondItem="F1X-Af-dsN" secondAttribute="trailing" constant="20" type="user" id="z7c-mP-jwI"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -135,7 +135,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="taskNameInput" destination="7iQ-Xh-2SR" id="DH2-XT-8KQ"/>
+                        <outlet property="taskNameInput" destination="F1X-Af-dsN" id="0sw-zO-ddX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iri-hS-yLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,6 +162,27 @@
             <point key="canvasLocation" x="898" y="75"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AddTaskViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTaskViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="taskNameInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ToDueMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDueMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

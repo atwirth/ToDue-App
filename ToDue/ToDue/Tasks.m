@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         _taskName = taskName;
+        _completed = FALSE;
         return self;
     }
     return nil;

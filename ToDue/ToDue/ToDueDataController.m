@@ -18,9 +18,9 @@
 - (void)initializeDefaultDataList {
     NSMutableArray *taskList = [[NSMutableArray alloc] init];
     self.masterTaskList = taskList;
-    Tasks *newTask;
-    newTask = [[Tasks alloc] initWithName:@"Task #1"];
-    [self addTask:newTask];
+    Tasks *newTaskItem;
+    newTaskItem = [[Tasks alloc] initWithName:@"Task #1"];
+    [self addTaskWithTask:newTaskItem];
    
 }
 
@@ -46,7 +46,7 @@
     return [self.masterTaskList objectAtIndex:theIndex];
 }
 
-- (void)addTask:(Tasks *)newTask{
+- (void)addTaskWithTask:(Tasks *)newTask{
     [self.masterTaskList addObject:newTask];
 }
 

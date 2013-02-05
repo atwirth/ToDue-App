@@ -30,8 +30,21 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem.accessibilityHint = @"Adds a new task event";
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    
 	// Do any additional setup after loading the view, typically from a nib.
 
+}
+
+- (IBAction)setEditMode:(UIBarButtonItem *)sender {
+    if (self.editing) {
+        sender.title = @"Edit";
+        [super setEditing:NO animated:YES];
+    } else {
+        sender.title = @"Done";
+        [super setEditing:YES animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,11 +69,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TaskCell";
+    static NSString *CellIdentifier = @"taskCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     Tasks *taskAtIndex = [self.dataController objectInListAtIndex:indexPath.row];
     [[cell textLabel] setText:taskAtIndex.taskName];
+    
+
     
     return cell;
 }
@@ -68,7 +83,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return NO;
+    return YES;
 }
 
 
@@ -88,8 +103,8 @@
     if([[segue identifier] isEqualToString:@"ReturnInput"]) {
         
         AddTaskViewController *addController = [segue sourceViewController];
-        if (addController.taskName) {
-            [self.dataController addTask:addController.taskName];
+        if (addController.tasking) {
+            [self.dataController addTaskWithTask:addController.tasking];
             [[self tableView] reloadData];
         }
         [self dismissViewControllerAnimated:YES completion:NULL];
@@ -104,5 +119,8 @@
         [self dismissViewControllerAnimated:YES  completion:NULL];
     }
 }
+
+
+
 
 @end
