@@ -13,6 +13,7 @@
 #import "AddTaskViewController.h"
 
 @interface ToDueMasterViewController () {
+   
     
 }
 @end
@@ -34,7 +35,39 @@
     
     
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(applicationDidEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:app];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+    
+    
+    paths = [[NSMutableArray alloc] initWithObjects:self.dataController.masterTaskList, nil];
+    [paths writeToFile:plistPath atomically:YES];
+    
+    
+    if ([fileManager fileExistsAtPath:plistPath] == YES)
+    {
+        NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:plistPath];
+        [self.dataController.masterTaskList setArray:array];      
+        
+    }
+}
 
+- (void)applicationDidEnterBackground:(NSNotification *)notification {
+    NSLog(@"Entering Background");
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    // paths[0];
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+    
+    [[NSDictionary dictionaryWithObjectsAndKeys:self.dataController.masterTaskList, @"text", nil] writeToFile:plistPath atomically:YES];
 }
 
 - (IBAction)setEditMode:(UIBarButtonItem *)sender {
@@ -74,11 +107,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     Tasks *taskAtIndex = [self.dataController objectInListAtIndex:indexPath.row];
     [[cell textLabel] setText:taskAtIndex.taskName];
-    
 
-    
+   
     return cell;
 }
+
+
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -102,10 +136,14 @@
 {
     if([[segue identifier] isEqualToString:@"ReturnInput"]) {
         
+    
+        
         AddTaskViewController *addController = [segue sourceViewController];
         if (addController.tasking) {
             [self.dataController addTaskWithTask:addController.tasking];
+            NSLog(@"%lu", (unsigned long)self.dataController.countOfList);
             [[self tableView] reloadData];
+        
         }
         [self dismissViewControllerAnimated:YES completion:NULL];
     }
@@ -119,6 +157,56 @@
         [self dismissViewControllerAnimated:YES  completion:NULL];
     }
 }
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"%@", indexPath);
+        ToDueDataController *data = [[ToDueDataController alloc] init];
+        NSMutableArray *items = [data masterTaskList];
+        Tasks *task = [items objectAtIndex:indexPath.row];
+        NSLog(@"%@", task.taskName);
+        NSLog(@"%@", task.completed);
+        NSLog(@"Count before = %lu", (unsigned long)data.masterTaskList.count);
+        
+        [data removeItem:task];
+        
+        NSLog(@"Count after = %lu", (unsigned long)data.masterTaskList.count);
+        
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];
+        
+
+        
+        
+    }
+    [tableView reloadData];
+
+
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSMutableArray *list = self.dataController.masterTaskList;
+    Tasks *task = [list objectAtIndex:indexPath.row];
+    
+    
+    if(cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [cell.textLabel setTextColor:[UIColor redColor]];
+        [task setCompleted:task.completed];
+                
+    }
+    else if (cell.accessoryType ==UITableViewCellAccessoryCheckmark) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell.textLabel setTextColor:[UIColor blackColor]];
+        [task setCompleted:task.completed];
+    }
+}
+
+
 
 
 

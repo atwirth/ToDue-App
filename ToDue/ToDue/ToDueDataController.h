@@ -13,11 +13,14 @@
 
 @interface ToDueDataController : NSObject
 
+
+
 @property (nonatomic, copy) NSMutableArray *masterTaskList;
 
 - (NSUInteger)countOfList;
 - (Tasks *)objectInListAtIndex:(NSUInteger)theIndex;
 - (void)addTaskWithTask:(Tasks *)newTask;
+- (void)removeItem:(Tasks *)task;
 
 
 

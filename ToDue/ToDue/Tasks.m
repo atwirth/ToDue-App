@@ -10,15 +10,26 @@
 
 @implementation Tasks
 
--(id)initWithName:(NSString *)taskName
+-(id)initWithName:(NSString *)taskName completed:(NSString *)completed
 {
     self = [super init];
     if (self) {
         _taskName = taskName;
-        _completed = FALSE;
+        _completed =  @"no";
         return self;
     }
     return nil;
 }
+
+-(void)setCompleted:(NSString *)completed
+{
+    
+    if ([completed isEqual: @"yes"]) {
+        _completed = @"no";
+    }
+    else if ([completed isEqual: @"no"]){
+        _completed = @"yes";
+    }
+        }
 
 @end

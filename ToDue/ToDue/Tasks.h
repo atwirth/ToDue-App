@@ -11,8 +11,9 @@
 @interface Tasks : NSObject
 
 @property (weak, nonatomic) NSString *taskName;
-@property (nonatomic) BOOL *completed;
+@property (nonatomic) NSString *completed;
 
--(id)initWithName:(NSString *)taskName;
+-(id)initWithName:(NSString *)taskName completed:(NSString *)completed;
+-(void)setCompleted:(NSString *)completed;
 
 @end

@@ -19,7 +19,7 @@
     NSMutableArray *taskList = [[NSMutableArray alloc] init];
     self.masterTaskList = taskList;
     Tasks *newTaskItem;
-    newTaskItem = [[Tasks alloc] initWithName:@"Task #1"];
+    newTaskItem = [[Tasks alloc] initWithName:@"Task #1" completed: @"yes"];
     [self addTaskWithTask:newTaskItem];
    
 }
@@ -48,6 +48,10 @@
 
 - (void)addTaskWithTask:(Tasks *)newTask{
     [self.masterTaskList addObject:newTask];
+}
+
+- (void)removeItem:(Tasks *)task{
+    [self.masterTaskList removeObjectIdenticalTo:task];
 }
 
 

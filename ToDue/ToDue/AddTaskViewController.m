@@ -44,6 +44,7 @@
 -(BOOL)textFieldShouldReturn: (UITextField *)textField {
     if(textField == self.taskNameInput) {
         [textField resignFirstResponder];
+        [self performSegueWithIdentifier:@"ReturnInput" sender:self];
     }
     return YES;
 }
@@ -53,8 +54,9 @@
     if([[segue identifier] isEqualToString:@"ReturnInput"]) {
         if([self.taskNameInput.text length]) {
             Tasks *tasking;
-            tasking = [[Tasks alloc] initWithName:self.taskNameInput.text];
+            tasking = [[Tasks alloc] initWithName:self.taskNameInput.text completed:@"no"];
             self.tasking = tasking;
+            
         }
     }
 }
